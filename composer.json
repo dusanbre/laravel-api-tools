@@ -17,5 +17,12 @@
   "require": {
     "timacdonald/json-api": "^1.0@beta",
     "wendelladriel/laravel-validated-dto": "^2.2"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Envoo\\LaravelApiTools\\LaravelApiToolsServiceProvider"
+      ]
+    }
   }
 }

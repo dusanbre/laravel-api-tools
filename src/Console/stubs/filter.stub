@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Envoo\LaravelApiTools\Http\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
+
+class {{ class }} extends Filter
+{
+    protected array $filters = [];
+
+
+    /**
+     * public function name(string $value): Builder
+     * {
+     *   return $this->builder->where('name', 'like', "%{$value}%");
+     * }
+     */
+}

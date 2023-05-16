@@ -1,0 +1,21 @@
+{
+  "name": "envoo/laravel-api-tools",
+  "description": "Tools for laravel api applications",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Envoo\\LaravelApiTools\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Dusan Antonijevic"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "timacdonald/json-api": "^1.0@beta",
+    "wendelladriel/laravel-validated-dto": "^2.2"
+  }
+}

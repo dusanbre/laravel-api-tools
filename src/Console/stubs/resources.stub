@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use TiMacDonald\JsonApi\JsonApiResource;
+
+class {{ class }} extends JsonApiResource
+{
+    /*
+     * List of model properties that should be returned in the resource
+     */
+    public array $attributes = [];
+
+    /*
+     * List of model relationships that should be returned in the resource
+     * This should be accessible via query parameters &include=nameOfRelationship
+     */
+    public array $relationships = [];
+}

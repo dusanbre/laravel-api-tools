@@ -2,6 +2,8 @@
 
 namespace Envoo\LaravelApiTools;
 
+use Envoo\LaravelApiTools\Console\MakeFilterCommand;
+use Envoo\LaravelApiTools\Console\MakeResourceCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelApiToolsServiceProvider extends ServiceProvider
@@ -11,17 +13,16 @@ class LaravelApiToolsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/laravel-api-tools.php', 'laravel-api-tools');
 
-        if (function_exists('config_path') && $this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/config/laravel-api-tools.php' => config_path('laravel-api-tools.php'),
-            ], 'config');
-        }
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Console\MakeFilterCommand::class,
-            ]);
-        }
+        $this->publishes([
+            __DIR__.'/config/laravel-api-tools.php' => config_path('laravel-api-tools.php'),
+        ], 'config');
+
+
+        $this->commands([
+            MakeFilterCommand::class,
+            MakeResourceCommand::class
+        ]);
     }
 
     public function register()

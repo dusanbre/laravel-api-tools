@@ -2,8 +2,10 @@
 
 namespace Envoo\LaravelApiTools;
 
+use Envoo\LaravelApiTools\Console\MakeEnumCommand;
 use Envoo\LaravelApiTools\Console\MakeFilterCommand;
 use Envoo\LaravelApiTools\Console\MakeResourceCommand;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelApiToolsServiceProvider extends ServiceProvider
@@ -11,6 +13,8 @@ class LaravelApiToolsServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        JsonResource::withoutWrapping();
+
         $this->mergeConfigFrom(__DIR__.'/config/laravel-api-tools.php', 'laravel-api-tools');
 
 
@@ -21,7 +25,8 @@ class LaravelApiToolsServiceProvider extends ServiceProvider
 
         $this->commands([
             MakeFilterCommand::class,
-            MakeResourceCommand::class
+            MakeResourceCommand::class,
+            MakeEnumCommand::class
         ]);
     }
 

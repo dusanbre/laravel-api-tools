@@ -15,6 +15,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
+    "php": "^8.1",
     "timacdonald/json-api": "^1.0@beta",
     "wendelladriel/laravel-validated-dto": "^2.2"
   },

@@ -13,14 +13,10 @@ trait HasUsername
 
     protected static function generateUniqueUsername(string $value): string
     {
-        $username = static::query()
-            ->where('username', 'regexp', preg_quote($value).'[\\d]?$')
-            ->orderByDesc('username')
-            ->take(1)
-            ->value('username');
+        $count = static::query()
+            ->where('username', $value)
+            ->count();
 
-        $number = (int)filter_var($username, FILTER_SANITIZE_NUMBER_INT);
-
-        return $number === 0 ? $value : $value.++$number;
+        return $value.'-'.$count;
     }
 }

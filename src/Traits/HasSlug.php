@@ -13,14 +13,10 @@ trait HasSlug
 
     protected static function generateUniqueSlug(string $value): string
     {
-        $slug = static::query()
-            ->where('slug', 'regexp', preg_quote($value).'[\\d]?$')
-            ->orderByDesc('slug')
-            ->take(1)
-            ->value('slug');
+        $count = static::query()
+            ->where('slug', $value)
+            ->count();
 
-        $number = (int)filter_var($slug, FILTER_SANITIZE_NUMBER_INT);
-
-        return $number === 0 ? $value : $value.++$number;
+        return $value.'-'.$count;
     }
 }

@@ -14,7 +14,7 @@ trait HasSlug
     protected static function generateUniqueSlug(string $value): string
     {
         $count = static::query()
-            ->where('slug', 'like', $value)
+            ->where('slug', 'like', $value.'%')
             ->count();
 
         return $value.'-'.$count;

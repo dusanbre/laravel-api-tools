@@ -14,7 +14,7 @@ trait HasUsername
     protected static function generateUniqueUsername(string $value): string
     {
         $count = static::query()
-            ->where('username', $value)
+            ->where('username', 'like', $value)
             ->count();
 
         return $value.'-'.$count;
